@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "276433602083",
+    "project_id": "hybrid-fintech-app",
+    "storage_bucket": "hybrid-fintech-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:276433602083:android:0ae83623cc420a6856d396",
+        "android_client_info": {
+          "package_name": "com.hybrid_fintech_app.hybrid_fintech_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6Im4jEMEAmsuvIt66_RE3hzBT8bgihSY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

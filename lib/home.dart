@@ -1,34 +1,31 @@
-import 'package:financial_app/transfer.dart';
+import 'package:hybrid_fintech_app/controllers/user_controller/userController.dart';
+import 'package:hybrid_fintech_app/navbar.dart';
+import 'package:hybrid_fintech_app/transfer.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
-  _HomePageState createState() => _HomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  int _selectedItemIndex = 2;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: Row(
-        children: [
-          buildNavBarItem(Icons.home, 0),
-          buildNavBarItem(Icons.card_giftcard, 1),
-          buildNavBarItem(Icons.camera, 2),
-          buildNavBarItem(Icons.pie_chart, 3),
-          buildNavBarItem(Icons.person, 4),
-        ],
-      ),
+      // bottomNavigationBar: Navbar(),
       body: Stack(
         children: [
           Column(
             children: [
               Container(
-                height: 300,
+                height: 275,
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      colors: [Color(0XFF00B686), Color(0XFF00838F)]),
+                  gradient: LinearGradient(colors: [
+                    Color.fromRGBO(42, 2, 54, .9),
+                    Color.fromRGBO(42, 2, 54, 1)
+                  ]),
                 ),
                 child: Padding(
                   padding:
@@ -43,11 +40,12 @@ class _HomePageState extends State<HomePage> {
                             color: Colors.white,
                           ),
                           Text(
-                            "Available balance",
+                            "${greeting()} Adeola",
                             style: TextStyle(
                               fontSize: 18.0,
-                              fontWeight: FontWeight.w600,
+                              fontWeight: FontWeight.w500,
                               color: Colors.white,
+                              fontStyle: FontStyle.italic,
                             ),
                           ),
                           Icon(
@@ -57,15 +55,15 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                       SizedBox(
-                        height: 20,
+                        height: 35,
                       ),
                       Row(
                         children: [
                           Container(
-                            width: 80.0,
-                            height: 80.0,
+                            width: 60.0,
+                            height: 60.0,
                             decoration: BoxDecoration(
-                              color: Color(0XFF00B686),
+                              color: Color(0XFF34006a),
                               boxShadow: [
                                 BoxShadow(
                                     color: Colors.black.withOpacity(.1),
@@ -91,7 +89,7 @@ class _HomePageState extends State<HomePage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Christopher Summers",
+                                "Adeola A.",
                                 style: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.w600,
@@ -141,30 +139,38 @@ class _HomePageState extends State<HomePage> {
                     padding: EdgeInsets.only(top: 75),
                     children: [
                       Text(
-                        "Activity",
+                        "Make Payment",
                         style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: Color(0XFF34006a)),
                       ),
                       SizedBox(
-                        height: 5,
+                        height: 10,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          buildActivityButton(Icons.card_membership, "My Card",
-                              Colors.blue.withOpacity(0.2), Color(0XFF01579B)),
+                          buildActivityButton(
+                              Icons.card_membership,
+                              "Transfer",
+                              Color(0XFF34006a).withOpacity(0.1),
+                              Color(0XFF34006a)),
                           buildActivityButton(
                               Icons.transfer_within_a_station,
-                              "Transfer",
-                              Colors.cyanAccent.withOpacity(0.2),
-                              Color(0XFF0097A7)),
+                              "Quick Topup",
+                              Color(0XFF34006a).withOpacity(0.1),
+                              Color(0XFF34006a)),
                           buildActivityButton(
                               Icons.pie_chart,
-                              "Statistics",
-                              Color(0XFFD7CCC8).withOpacity(0.4),
-                              Color(0XFF9499B7)),
+                              "Airtime & Data",
+                              Color(0XFF34006a).withOpacity(0.1),
+                              Color(0XFF34006a)),
+                          buildActivityButton(
+                              Icons.pie_chart,
+                              "TV & Electric",
+                              Color(0XFF34006a).withOpacity(0.1),
+                              Color(0XFF34006a)),
                         ],
                       ),
                       SizedBox(
@@ -183,6 +189,8 @@ class _HomePageState extends State<HomePage> {
                       buildCategoryCard(Icons.fastfood, "Food", 120, 20),
                       buildCategoryCard(Icons.flash_on, "Utilities", 430, 17),
                       buildCategoryCard(Icons.fastfood, "Food", 120, 20),
+                      buildCategoryCard(Icons.fastfood, "Food", 120, 20),
+                      buildCategoryCard(Icons.fastfood, "Food", 120, 20),
                     ],
                   ),
                 ),
@@ -190,12 +198,12 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
           Positioned(
-            top: 185,
+            top: 190,
             right: 0,
             child: Container(
               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
               width: MediaQuery.of(context).size.width * 0.85,
-              height: 160,
+              height: 130,
               decoration: BoxDecoration(
                   color: Colors.white,
                   boxShadow: [
@@ -213,8 +221,12 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  SizedBox(
+                    height: 15,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -222,19 +234,23 @@ class _HomePageState extends State<HomePage> {
                           Row(
                             children: [
                               Text(
-                                "Income",
+                                "Money In",
                                 style: TextStyle(
-                                    color: Colors.grey,
+                                    color: Color(0XFF34006a),
                                     fontWeight: FontWeight.bold),
                               ),
                               SizedBox(
                                 width: 10,
                               ),
                               Icon(
-                                Icons.arrow_upward,
-                                color: Color(0XFF00838F),
+                                Icons.arrow_downward,
+                                size: 12,
+                                color: Color.fromRGBO(42, 2, 54, 1),
                               )
                             ],
+                          ),
+                          SizedBox(
+                            height: 6,
                           ),
                           Text(
                             "\$2 170.90",
@@ -245,26 +261,30 @@ class _HomePageState extends State<HomePage> {
                           )
                         ],
                       ),
-                      Container(width: 1, height: 50, color: Colors.grey),
+                      Container(width: 1, height: 45, color: Color(0XFF34006a)),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
                             children: [
                               Text(
-                                "Expenses",
+                                "Money Out",
                                 style: TextStyle(
-                                    color: Colors.grey,
+                                    color: Color(0XFF34006a),
                                     fontWeight: FontWeight.bold),
                               ),
                               SizedBox(
                                 width: 10,
                               ),
                               Icon(
-                                Icons.arrow_downward,
-                                color: Color(0XFF00838F),
+                                Icons.arrow_upward,
+                                size: 12,
+                                color: Color.fromRGBO(42, 2, 54, 1),
                               )
                             ],
+                          ),
+                          SizedBox(
+                            height: 6,
                           ),
                           Text(
                             "\$1 450.10",
@@ -277,78 +297,60 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
+                  // SizedBox(
+                  //   height: 15,
+                  // ),
+                  // Text(
+                  //   "You spent \$ 1,494 this month",
+                  //   style: TextStyle(
+                  //     fontSize: 13,
+                  //     fontStyle: FontStyle.italic,
+                  //   ),
+                  // ),
+                  // SizedBox(
+                  //   height: 3,
+                  // ),
+                  // Text(
+                  //   "Let's see the cost statistics for this period",
+                  //   style: TextStyle(
+                  //     fontSize: 13,
+                  //     fontStyle: FontStyle.italic,
+                  //   ),
+                  // ),
+
                   SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "You spent \$ 1,494 this month",
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontStyle: FontStyle.italic,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 3,
-                  ),
-                  Text(
-                    "Let's see the cost statistics for this period",
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontStyle: FontStyle.italic,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
+                    height: 15,
                   ),
                   Container(
                     height: 1,
                     width: double.maxFinite,
                     color: Colors.grey.withOpacity(0.5),
                   ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Container(
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      "Tell me more",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Color(0XFF00B686)),
+                  GestureDetector(
+                    onTap: () {
+                      print('History clicked');
+                    },
+                    child: Container(
+                      padding: EdgeInsets.only(top: 10, bottom: 5),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                        width: 1,
+                        color: Colors.transparent,
+                      )),
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        "History >",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            color: Color(0XFF34006a)),
+                      ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
           )
         ],
-      ),
-    );
-  }
-
-  GestureDetector buildNavBarItem(IconData icon, int index) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          _selectedItemIndex = index;
-        });
-      },
-      child: Container(
-        width: MediaQuery.of(context).size.width / 5,
-        height: 60,
-        decoration: index == _selectedItemIndex
-            ? BoxDecoration(
-                border:
-                    Border(bottom: BorderSide(width: 4, color: Colors.green)),
-                gradient: LinearGradient(colors: [
-                  Colors.green.withOpacity(0.3),
-                  Colors.green.withOpacity(0.016),
-                ], begin: Alignment.bottomCenter, end: Alignment.topCenter))
-            : BoxDecoration(),
-        child: Icon(
-          icon,
-          color: index == _selectedItemIndex ? Color(0XFF00B868) : Colors.grey,
-        ),
       ),
     );
   }
@@ -371,7 +373,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Icon(
                     icon,
-                    color: Color(0xFF00B686),
+                    color: Color(0XFF34006a),
                   ),
                   SizedBox(
                     width: 10,
@@ -424,7 +426,7 @@ class _HomePageState extends State<HomePage> {
                 width: 80,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(2),
-                    color: Color(0XFF00B686)),
+                    color: Color(0XFF34006a)),
               ),
             ],
           )
@@ -439,9 +441,10 @@ class _HomePageState extends State<HomePage> {
       onTap: () => Navigator.of(context).push(
           MaterialPageRoute(builder: (BuildContext context) => TransferPage())),
       child: Container(
-        margin: EdgeInsets.all(10),
-        height: 90,
-        width: 90,
+        margin: EdgeInsets.all(7),
+        padding: EdgeInsets.all(5),
+        height: 75,
+        width: 70,
         decoration: BoxDecoration(
             color: backgroundColor, borderRadius: BorderRadius.circular(10.0)),
         child: Column(
@@ -450,14 +453,19 @@ class _HomePageState extends State<HomePage> {
             Icon(
               icon,
               color: iconColor,
+              size: 25,
             ),
             SizedBox(
-              height: 5,
+              height: 10,
             ),
             Text(
               title,
-              style:
-                  TextStyle(color: Colors.black54, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  color: Color(0XFF34006a),
+                  fontSize: 10,
+                  height: 1,
+                  fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
             )
           ],
         ),

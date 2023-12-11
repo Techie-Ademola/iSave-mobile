@@ -1,24 +1,18 @@
+import 'package:hybrid_fintech_app/navbar.dart';
 import 'package:flutter/material.dart';
 
 class TransferPage extends StatefulWidget {
+  const TransferPage({Key? key}) : super(key: key);
+
   @override
   _TransferPageState createState() => _TransferPageState();
 }
 
 class _TransferPageState extends State<TransferPage> {
-  int _selectedItemIndex = 2;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: Row(
-        children: [
-          buildNavBarItem(Icons.home, 0),
-          buildNavBarItem(Icons.card_giftcard, 1),
-          buildNavBarItem(Icons.camera, 2),
-          buildNavBarItem(Icons.pie_chart, 3),
-          buildNavBarItem(Icons.person, 4),
-        ],
-      ),
+      // bottomNavigationBar: Navbar(),
       body: Stack(
         children: [
           Container(
@@ -167,7 +161,7 @@ class _TransferPageState extends State<TransferPage> {
       padding: EdgeInsets.symmetric(vertical: 12),
       decoration: BoxDecoration(
         border: Border(
-          bottom: BorderSide(width: 1, color: Colors.grey[200]),
+          bottom: BorderSide(width: 1, color: Colors.grey.withOpacity(0.5)),
         ),
       ),
       child: Row(
@@ -298,30 +292,31 @@ class _TransferPageState extends State<TransferPage> {
       ),
     );
   }
-  GestureDetector buildNavBarItem(IconData icon, int index) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          _selectedItemIndex = index;
-        });
-      },
-      child: Container(
-        width: MediaQuery.of(context).size.width / 5,
-        height: 60,
-        decoration: index == _selectedItemIndex
-            ? BoxDecoration(
-                border:
-                    Border(bottom: BorderSide(width: 4, color: Colors.green)),
-                gradient: LinearGradient(colors: [
-                  Colors.green.withOpacity(0.3),
-                  Colors.green.withOpacity(0.016),
-                ], begin: Alignment.bottomCenter, end: Alignment.topCenter))
-            : BoxDecoration(),
-        child: Icon(
-          icon,
-          color: index == _selectedItemIndex ? Color(0XFF00B868) : Colors.grey,
-        ),
-      ),
-    );
-  }
+
+  // GestureDetector buildNavBarItem(IconData icon, int index) {
+  //   return GestureDetector(
+  //     onTap: () {
+  //       setState(() {
+  //         _selectedItemIndex = index;
+  //       });
+  //     },
+  //     child: Container(
+  //       width: MediaQuery.of(context).size.width / 5,
+  //       height: 60,
+  //       decoration: index == _selectedItemIndex
+  //           ? BoxDecoration(
+  //               border:
+  //                   Border(bottom: BorderSide(width: 4, color: Colors.green)),
+  //               gradient: LinearGradient(colors: [
+  //                 Colors.green.withOpacity(0.3),
+  //                 Colors.green.withOpacity(0.016),
+  //               ], begin: Alignment.bottomCenter, end: Alignment.topCenter))
+  //           : BoxDecoration(),
+  //       child: Icon(
+  //         icon,
+  //         color: index == _selectedItemIndex ? Color(0XFF00B868) : Colors.grey,
+  //       ),
+  //     ),
+  //   );
+  // }
 }

@@ -1,4 +1,4 @@
-# financial_app
+# hybrid_fintech_app
 
 A new Flutter project.
 
