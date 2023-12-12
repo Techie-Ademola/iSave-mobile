@@ -20,7 +20,7 @@ class _HeartbeatAnimationState extends State<HeartbeatAnimation>
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 700),
+      duration: const Duration(milliseconds: 600),
     )..addStatusListener((status) {
         if (status == AnimationStatus.completed) {
           _animationController.reverse();
@@ -28,7 +28,7 @@ class _HeartbeatAnimationState extends State<HeartbeatAnimation>
           _animationController.forward();
         }
       });
-    _scaleAnimation = Tween<double>(begin: 1.0, end: 1.1).animate(
+    _scaleAnimation = Tween<double>(begin: 0.5, end: 1.0).animate(
       CurvedAnimation(
         parent: _animationController,
         curve: Curves.ease,
@@ -48,8 +48,8 @@ class _HeartbeatAnimationState extends State<HeartbeatAnimation>
     return AnimatedBuilder(
       animation: _scaleAnimation,
       builder: (BuildContext context, Widget? child) {
-        return Transform.scale(
-          scale: _scaleAnimation.value,
+        return Opacity(
+          opacity: _scaleAnimation.value,
           child: child,
         );
       },

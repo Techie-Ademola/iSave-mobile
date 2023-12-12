@@ -56,38 +56,16 @@ class _SplashscreenState extends State<Splashscreen>
     return MediaQuery(
       data: MediaQuery.of(context).copyWith(textScaleFactor: 0.85),
       child: Scaffold(
-        backgroundColor: Colors.white,
-        body: Column(
-          children: [
-            Stack(
-              children: [
-                Container(
-                  color: Colors.white,
-                  height: height,
-                  width: width,
-                  // child: Image.asset(
-                  //   "images/splash.png",
-                  //   fit: BoxFit.cover,
-                  // ),
-                ),
-                HeartbeatAnimation(
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: height / 2.4,
-                      ),
-                      Center(
-                        child: Image.asset(
-                          "assets/hybrid_logo.png",
-                          height: height / 7,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+        backgroundColor: Color(0xFF2B0431),
+        body: Center(
+          child: HeartbeatAnimation(
+            child: Center(
+              child: Image.asset(
+                "assets/hybrid_logo.png",
+                height: height / 9,
+              ),
             ),
-          ],
+          ),
         ),
       ),
     );

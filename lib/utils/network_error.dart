@@ -2,6 +2,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 // import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hybrid_fintech_app/utils/media.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -20,7 +21,7 @@ class _NetworkErrorState extends State<NetworkError> {
     super.initState();
   }
 
-  dynamic fluttercolor = const Color(0xFF6C56F9);
+  dynamic fluttercolor = const Color(0XFFA641B7);
 
   Future<void> checkInternetConnection() async {
     var connectivityResult = await Connectivity().checkConnectivity();
@@ -67,21 +68,34 @@ class _NetworkErrorState extends State<NetworkError> {
                             scale: 1.5,
                             child: Image.asset(
                               'assets/hybrid_logo.png',
-                              width: 150,
+                              width: 60,
                             ),
                           ),
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.only(top: 50),
                             child: Text(
-                              'Please check your internet connection and try again',
+                              'Oops! Connection failed',
                               style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.grey,
+                                fontSize: 28,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black87,
                               ),
                             ),
                           ),
-                          const SizedBox(height: 20),
+                          const Padding(
+                            padding:
+                                EdgeInsets.only(top: 10, left: 20, right: 20),
+                            child: Text(
+                              'Please check your internet connection \n and try again',
+                              style: TextStyle(
+                                  fontSize: 19,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.grey,
+                                  height: 1.5),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          const SizedBox(height: 40),
                           ElevatedButton(
                             onPressed: _isRefreshing ? null : _handleRefresh,
                             child: const Text(
@@ -95,12 +109,12 @@ class _NetworkErrorState extends State<NetworkError> {
                             style: ElevatedButton.styleFrom(
                               foregroundColor: Colors.white,
                               backgroundColor: fluttercolor,
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 12,
-                                horizontal: 30,
+                              padding: EdgeInsets.symmetric(
+                                vertical: 15,
+                                horizontal: width / 5,
                               ),
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: BorderRadius.circular(7),
                               ),
                             ),
                           ),
