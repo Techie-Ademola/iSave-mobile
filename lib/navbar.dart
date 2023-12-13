@@ -140,7 +140,7 @@ class _NavbarState extends State<Navbar> {
     );
   }
 
-  // GestureDetector buildNavBarItem(IconData icon, int index) {
+  // GestureDetector buildNavBarItem(IconData icon, int index, String label) {
   //   return GestureDetector(
   //     onTap: () {
   //       setState(() {

@@ -93,6 +93,8 @@ dependencies:
   flutter_animation_progress_bar: ^2.3.1
   flutter_google_places_web: ^1.0.2
   cloud_firestore: ^4.13.5
+  device_info: ^2.0.3
+  location: ^5.0.3
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -130,6 +132,39 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+  fonts:
+    - family: Medium
+      fonts:
+        - asset: assets/fonts/myfonts/Poppins-Medium.ttf
+          weight: 500
+    - family: Bold
+      fonts:
+        - asset: assets/fonts/myfonts/Poppins-Bold.ttf
+          weight: 700
+    - family: Light
+      fonts:
+        - asset: assets/fonts/myfonts/Poppins-Light.ttf
+          weight: 300
+    - family: Extrabold
+      fonts:
+        - asset: assets/fonts/myfonts/Poppins-ExtraBold.ttf
+          weight: 900
+    - family: Extralight
+      fonts:
+        - asset: assets/fonts/myfonts/Poppins-ExtraLight.ttf
+          weight: 200
+    - family: Italic
+      fonts:
+        - asset: assets/fonts/myfonts/Poppins-Italic.ttf
+          weight: 400
+    - family: Light Italic
+      fonts:
+        - asset: assets/fonts/myfonts/Poppins-LightItalic.ttf
+          weight: 300
+    - family: Extralight Italic
+      fonts:
+        - asset: assets/fonts/myfonts/Poppins-ExtraLightItalic.ttf
+          weight: 200
   # fonts:
   #   - family: Schyler
   #     fonts:
