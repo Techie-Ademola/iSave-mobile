@@ -1,3 +1,4 @@
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hybrid_fintech_app/controllers/user_controller/userController.dart';
 import 'package:hybrid_fintech_app/navbar.dart';
 import 'package:hybrid_fintech_app/transfer.dart';
@@ -107,8 +108,9 @@ class _HomePageState extends State<HomePage> {
                               ),
                               padding: EdgeInsets.all(4),
                               child: CircleAvatar(
-                                backgroundImage: NetworkImage(
-                                    "https://images.pexels.com/photos/2167673/pexels-photo-2167673.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"),
+                                backgroundColor: Colors.transparent,
+                                backgroundImage:
+                                    AssetImage("assets/hybrid_logo.png"),
                               ),
                             ),
                             SizedBox(
@@ -120,18 +122,19 @@ class _HomePageState extends State<HomePage> {
                                 Text(
                                   "${greeting()}, Adeola",
                                   style: TextStyle(
-                                    fontSize: width / 20,
+                                    fontSize: width / 22,
                                     fontWeight: FontWeight.w500,
                                     color: Colors.white,
+                                    fontFamily: 'Medium',
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(top: 8.0),
+                                  padding: const EdgeInsets.only(top: 3.0),
                                   child: Text(
                                     '"Comrade save o!"',
                                     style: TextStyle(
                                         fontSize: 15,
-                                        fontWeight: FontWeight.w400,
+                                        fontFamily: 'Light',
                                         color: Colors.white),
                                   ),
                                 ),
@@ -143,20 +146,25 @@ class _HomePageState extends State<HomePage> {
                                         'Level: ',
                                         style: TextStyle(
                                             fontSize: 14,
-                                            fontWeight: FontWeight.w300,
+                                            fontFamily: 'Extra Light',
+                                            // fontWeight: FontWeight.w300,
                                             color: Colors.white),
                                       ),
                                       Container(
-                                        padding: EdgeInsets.fromLTRB(4, 2, 4, 2),
+                                        padding:
+                                            EdgeInsets.fromLTRB(4, 2, 4, 2),
                                         decoration: BoxDecoration(
-                                          border: Border.all(width: 0.5, color: Color(0XFFA641B7)),
-                                          borderRadius: BorderRadius.circular(10)
-                                        ),
+                                            border: Border.all(
+                                                width: 0.5,
+                                                color: Color(0XFFA641B7)),
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
                                         child: Text(
                                           'Beginner',
                                           style: TextStyle(
                                             color: Colors.white,
-                                            fontWeight: FontWeight.w200,
+                                            fontFamily: 'Extra Light',
+                                            fontWeight: FontWeight.w300,
                                             fontSize: 11,
                                           ),
                                         ),
@@ -208,6 +216,7 @@ class _HomePageState extends State<HomePage> {
                           "Quick Access",
                           style: TextStyle(
                               fontSize: 16,
+                              fontFamily: 'Medium',
                               fontWeight: FontWeight.w400,
                               color: Color(0XFF34006a)),
                         ),
@@ -221,22 +230,26 @@ class _HomePageState extends State<HomePage> {
                                 Icons.card_membership,
                                 "Transfer",
                                 Color(0XFF34006a).withOpacity(0.1),
-                                Color(0XFF34006a)),
+                                Color(0XFF34006a),
+                                TransferPage()),
                             buildActivityButton(
                                 Icons.transfer_within_a_station,
                                 "Quick Topup",
                                 Color(0XFF34006a).withOpacity(0.1),
-                                Color(0XFF34006a)),
+                                Color(0XFF34006a),
+                                TransferPage()),
                             buildActivityButton(
                                 Icons.pie_chart,
                                 "Airtime & Data",
                                 Color(0XFF34006a).withOpacity(0.1),
-                                Color(0XFF34006a)),
+                                Color(0XFF34006a),
+                                TransferPage()),
                             buildActivityButton(
                                 Icons.pie_chart,
                                 "TV & Electric",
                                 Color(0XFF34006a).withOpacity(0.1),
-                                Color(0XFF34006a)),
+                                Color(0XFF34006a),
+                                TransferPage()),
                           ],
                         ),
                         SizedBox(
@@ -249,42 +262,101 @@ class _HomePageState extends State<HomePage> {
                                 Icons.card_membership,
                                 "Pay Bill",
                                 Color(0XFF34006a).withOpacity(0.1),
-                                Color(0XFF34006a)),
+                                Color(0XFF34006a),
+                                TransferPage()),
                             buildActivityButton(
                                 Icons.transfer_within_a_station,
                                 "Top-Up",
                                 Color(0XFF34006a).withOpacity(0.1),
-                                Color(0XFF34006a)),
+                                Color(0XFF34006a),
+                                TransferPage()),
                             buildActivityButton(
                                 Icons.pie_chart,
                                 "Support",
                                 Color(0XFF34006a).withOpacity(0.1),
-                                Color(0XFF34006a)),
+                                Color(0XFF34006a),
+                                TransferPage()),
                             buildActivityButton(
                                 Icons.pie_chart,
-                                "More",
+                                "More...",
                                 Color(0XFF34006a).withOpacity(0.1),
-                                Color(0XFF34006a)),
+                                Color(0XFF34006a),
+                                TransferPage()),
                           ],
+                        ),
+                        SizedBox(
+                          height: 30,
+                        ),
+                        Text(
+                          "Choose a Savings Plan",
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontFamily: 'Medium',
+                              fontWeight: FontWeight.w400,
+                              color: Color(0XFF34006a)),
                         ),
                         SizedBox(
                           height: 15,
                         ),
-                        Text(
-                          "Categories",
-                          style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            buildPlanButton(
+                              'assets/icons/target_icon.svg',
+                              "Target Saving",
+                              Color(0XFF34006a).withOpacity(0.1),
+                              Color(0XFF34006a),
+                              TransferPage(),
+                            ),
+                            buildPlanButton(
+                              'assets/icons/lock_icon.svg',
+                              "Fixed Saving",
+                              Color(0XFF34006a).withOpacity(0.1),
+                              Color(0XFF34006a),
+                              TransferPage(),
+                            ),
+                          ],
                         ),
                         SizedBox(
-                          height: 20,
+                          height: 10,
                         ),
-                        buildCategoryCard(Icons.fastfood, "Food", 120, 20),
-                        buildCategoryCard(Icons.flash_on, "Utilities", 430, 17),
-                        buildCategoryCard(Icons.fastfood, "Food", 120, 20),
-                        buildCategoryCard(Icons.fastfood, "Food", 120, 20),
-                        buildCategoryCard(Icons.fastfood, "Food", 120, 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            buildPlanButton(
+                              'assets/icons/multiuser_icon.svg',
+                              "Saving Challenge",
+                              Color(0XFF34006a).withOpacity(0.1),
+                              Color(0XFF34006a),
+                              TransferPage(),
+                            ),
+                            buildPlanButton(
+                              'assets/icons/bellrotate_icon.svg',
+                              "Emmergency Saving",
+                              Color(0XFF34006a).withOpacity(0.1),
+                              Color(0XFF34006a),
+                              TransferPage(),
+                            ),
+                          ],
+                        ),
+                        // Text(
+                        //   "Categories",
+                        //   style: TextStyle(
+                        //       fontSize: 18,
+                        //       fontWeight: FontWeight.bold,
+                        //       color: Colors.grey),
+                        // ),
+                        // SizedBox(
+                        //   height: 20,
+                        // ),
+                        // buildCategoryCard(Icons.fastfood, "Food", 120, 20),
+                        // buildCategoryCard(Icons.flash_on, "Utilities", 430, 17),
+                        // buildCategoryCard(Icons.fastfood, "Food", 120, 20),
+                        // buildCategoryCard(Icons.fastfood, "Food", 120, 20),
+                        // buildCategoryCard(Icons.fastfood, "Food", 120, 20),
+                        SizedBox(
+                          height: 30,
+                        )
                       ],
                     ),
                   ),
@@ -345,7 +417,8 @@ class _HomePageState extends State<HomePage> {
                                       "Total Savings",
                                       style: TextStyle(
                                           color: Color(0XFFFFFFFF),
-                                          fontWeight: FontWeight.w400),
+                                          fontFamily: 'Light',
+                                          fontWeight: FontWeight.w500),
                                     ),
                                   ],
                                 ),
@@ -370,10 +443,9 @@ class _HomePageState extends State<HomePage> {
                                             child: Text(
                                               "* * * *",
                                               style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 18,
-                                                fontFamily: 'Gilroy Medium',
-                                              ),
+                                                  color: Colors.white,
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.bold),
                                             ),
                                           ),
                                   ],
@@ -555,11 +627,11 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  GestureDetector buildActivityButton(
-      IconData icon, String title, Color backgroundColor, Color iconColor) {
+  GestureDetector buildActivityButton(IconData icon, String title,
+      Color backgroundColor, Color iconColor, Widget destinationPage) {
     return GestureDetector(
-      onTap: () => Navigator.of(context).push(
-          MaterialPageRoute(builder: (BuildContext context) => TransferPage())),
+      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+          builder: (BuildContext context) => destinationPage)),
       child: Container(
         // margin: EdgeInsets.all(3),
         padding: EdgeInsets.all(5),
@@ -590,7 +662,59 @@ class _HomePageState extends State<HomePage> {
                     fontFamily: 'Medium',
                     overflow: TextOverflow.ellipsis,
                     fontWeight: FontWeight.w400),
-                    maxLines: 1,
+                maxLines: 1,
+                textAlign: TextAlign.center,
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  GestureDetector buildPlanButton(String image, String title,
+      Color backgroundColor, Color iconColor, Widget destinationPage) {
+    return GestureDetector(
+      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+          builder: (BuildContext context) => destinationPage)),
+      child: Container(
+        // margin: EdgeInsets.all(3),
+        padding: EdgeInsets.all(5),
+        height: 100,
+        width: MediaQuery.of(context).size.width * 0.448,
+        decoration: BoxDecoration(
+            color: backgroundColor, borderRadius: BorderRadius.circular(4.0)),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              width: 50,
+              height: 50,
+              padding: EdgeInsets.all(15),
+              decoration: BoxDecoration(
+                  color: iconColor, borderRadius: BorderRadius.circular(50)),
+              child: SvgPicture.asset(
+                image,
+                color: Colors.white,
+                width: 19,
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              width: width / 3.4,
+              child: Text(
+                title,
+                style: TextStyle(
+                    color: Color(0XFF34006a),
+                    fontSize: 12,
+                    height: 1.2,
+                    fontFamily: 'Medium',
+                    overflow: TextOverflow.ellipsis,
+                    fontWeight: FontWeight.w400),
+                maxLines: 1,
                 textAlign: TextAlign.center,
               ),
             )
@@ -600,6 +724,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
 
 
 
