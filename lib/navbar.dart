@@ -2,6 +2,7 @@ import 'package:hybrid_fintech_app/home.dart';
 import 'package:hybrid_fintech_app/transfer.dart';
 import 'package:hybrid_fintech_app/utils/network_error.dart';
 import 'package:flutter/material.dart';
+import 'package:hybrid_fintech_app/views/pages/save/save.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -68,7 +69,7 @@ class _NavbarState extends State<Navbar> {
                   },
                   children: [
                     const HomePage(),
-                    const TransferPage(),
+                    const SavePage(),
                     const HomePage(),
                     const TransferPage(),
                     // const HomePage(),
