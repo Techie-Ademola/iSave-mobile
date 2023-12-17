@@ -25,36 +25,35 @@ class _CompletedPlansState extends State<CompletedPlans> {
             Text(
               'No Completed Challenge',
               style: TextStyle(
-                  color: Colors.black, fontSize: 20, fontFamily: 'Bold'),
+                  color: Colors.black, fontSize: 18, fontFamily: 'Bold'),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
               child: Text(
                 'Oops! you have no completed savingsChallenge at the moment. When you complete any savings challenge, you will see the full details here',
                 style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Light'),
+                    color: Colors.black, fontSize: 14, fontFamily: 'Light'),
                 textAlign: TextAlign.center,
               ),
             ),
             SizedBox(
-             height: 30,
+              height: 30,
             ),
             Container(
               width: width,
+              padding: EdgeInsets.symmetric(horizontal: 10),
               color: Colors.white,
               child: ElevatedButton(
                   child: Text(
                     'Create a new Challenge',
                     style: TextStyle(
-                        color: myColor, fontFamily: 'Bold', fontSize: 19),
+                        color: myColor, fontFamily: 'Medium', fontSize: 16),
                   ),
                   onPressed: () {
-                      Get.to(SavingChallenge());
+                    Get.to(SavingChallenge());
                   },
                   style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.symmetric(vertical: 12),
                     backgroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -65,21 +64,25 @@ class _CompletedPlansState extends State<CompletedPlans> {
                   )),
             ),
             SizedBox(
-             height: 0,
+              height: 10,
             ),
             Container(
               width: width,
+              padding: EdgeInsets.symmetric(horizontal: 10),
               color: Colors.white,
               child: ElevatedButton(
                   child: Text(
                     'Join a Challenge',
                     style: TextStyle(
-                        color: Colors.white, fontFamily: 'Bold', fontSize: 19),
+                        color: Colors.white,
+                        fontFamily: 'Medium',
+                        fontSize: 16),
                   ),
                   onPressed: () {
                     Get.to(SavingChallenge());
                   },
                   style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.symmetric(vertical: 12),
                     backgroundColor: myColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -94,5 +97,4 @@ class _CompletedPlansState extends State<CompletedPlans> {
       ),
     );
   }
-
 }

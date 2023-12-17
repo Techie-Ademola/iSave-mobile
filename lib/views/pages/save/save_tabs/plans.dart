@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hybrid_fintech_app/notify.dart';
 import 'package:hybrid_fintech_app/utils/media.dart';
 
 class SavingPlans extends StatefulWidget {
@@ -13,108 +14,115 @@ class _SavingPlansState extends State<SavingPlans> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Container(
           // height: height,
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(0, 25, 0, 0),
+            padding: const EdgeInsets.fromLTRB(2, 10, 2, 0),
             child: Column(
               children: [
                 Container(
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
-                            child: Image.asset(
-                              'assets/images/rent.png',
-                              width: 175,
-                              height: 140,
-                              fit: BoxFit.cover,
-                            ),
+                      GestureDetector(
+                        onTap: () {
+                          alert(context, 'success', 'Challenge card clicked!');
+                          print('Challenge card clicked!');
+                        },
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * 0.450,
+                          child: Column(
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(12),
+                                child: Image.asset(
+                                  'assets/images/rent.png',
+                                  width: double.infinity,
+                                  height: 140,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              SizedBox(height: 8),
+                              Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'House Rent',
+                                      style: TextStyle(fontSize: 15),
+                                    ),
+                                    Icon(
+                                      Icons.people,
+                                      color: Colors.grey,
+                                    )
+                                  ]),
+                              SizedBox(height: 4),
+                              Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      '4000.00/Day',
+                                      style: TextStyle(
+                                          fontSize: 14, color: Colors.grey),
+                                    ),
+                                    Text(
+                                      '21 people',
+                                      style: TextStyle(
+                                          fontSize: 14, color: Colors.grey),
+                                    ),
+                                  ]),
+                            ],
                           ),
-                          SizedBox(height: 8),
-                          Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'House Rent',
-                                  style: TextStyle(fontSize: 15),
-                                ),
-                                SizedBox(
-                                  width: 75,
-                                ),
-                                Icon(
-                                  Icons.people,
-                                  color: Colors.grey,
-                                )
-                              ]),
-                          SizedBox(height: 4),
-                          Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  '4000.00/Day',
-                                  style: TextStyle(
-                                      fontSize: 14, color: Colors.grey),
-                                ),
-                                SizedBox(
-                                  width: 45,
-                                ),
-                                Text(
-                                  '21 people',
-                                  style: TextStyle(
-                                      fontSize: 14, color: Colors.grey),
-                                ),
-                              ]),
-                        ],
+                        ),
                       ),
-                      SizedBox(width: 16),
-                      Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
-                            child: Image.asset(
-                              'assets/images/detty.png',
-                              width: 175,
-                              height: 140,
-                              fit: BoxFit.cover,
+                      // SizedBox(width: 16),
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.450,
+                        child: Column(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(12),
+                              child: Image.asset(
+                                'assets/images/detty.png',
+                                width: double.infinity,
+                                height: 140,
+                                fit: BoxFit.cover,
+                              ),
                             ),
-                          ),
-                          SizedBox(height: 8),
-                          Row(children: [
-                            Text(
-                              'Detty December',
-                              style: TextStyle(fontSize: 15),
-                            ),
-                            SizedBox(
-                              width: 55,
-                            ),
-                            Icon(
-                              Icons.people,
-                              color: Colors.grey,
-                            ),
-                          ]),
-                          SizedBox(height: 4),
-                          Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  '2000.00/Day',
-                                  style: TextStyle(
-                                      fontSize: 14, color: Colors.grey),
-                                ),
-                                SizedBox(
-                                  width: 50,
-                                ),
-                                Text(
-                                  '16 people',
-                                  style: TextStyle(
-                                      fontSize: 14, color: Colors.grey),
-                                ),
-                              ]),
-                        ],
+                            SizedBox(height: 8),
+                            Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'Detty December',
+                                    style: TextStyle(fontSize: 15),
+                                  ),
+                                  Icon(
+                                    Icons.people,
+                                    color: Colors.grey,
+                                  ),
+                                ]),
+                            SizedBox(height: 4),
+                            Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    '2000.00/Day',
+                                    style: TextStyle(
+                                        fontSize: 14, color: Colors.grey),
+                                  ),
+                                  Text(
+                                    '16 people',
+                                    style: TextStyle(
+                                        fontSize: 14, color: Colors.grey),
+                                  ),
+                                ]),
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -123,100 +131,96 @@ class _SavingPlansState extends State<SavingPlans> {
                   height: 15,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(12),
-                          child: Image.asset(
-                            'assets/images/game.png',
-                            width: 175,
-                            height: 140,
-                            fit: BoxFit.cover,
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.450,
+                      child: Column(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: Image.asset(
+                              'assets/images/game.png',
+                              width: double.infinity,
+                              height: 140,
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 8),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Playstation 5',
-                                style: TextStyle(fontSize: 15),
-                              ),
-                              SizedBox(
-                                width: 75,
-                              ),
-                              Icon(
-                                Icons.people,
-                                color: Colors.grey,
-                              )
-                            ]),
-                        SizedBox(height: 4),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(
-                                '10000.00/week',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              ),
-                              SizedBox(
-                                width: 45,
-                              ),
-                              Text(
-                                '19 people',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              ),
-                            ]),
-                      ],
+                          SizedBox(height: 8),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Playstation 5',
+                                  style: TextStyle(fontSize: 15),
+                                ),
+                                Icon(
+                                  Icons.people,
+                                  color: Colors.grey,
+                                )
+                              ]),
+                          SizedBox(height: 4),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  '10000.00/week',
+                                  style: TextStyle(
+                                      fontSize: 14, color: Colors.grey),
+                                ),
+                                Text(
+                                  '19 people',
+                                  style: TextStyle(
+                                      fontSize: 14, color: Colors.grey),
+                                ),
+                              ]),
+                        ],
+                      ),
                     ),
                     SizedBox(width: 10),
-                    Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(12),
-                          child: Image.asset(
-                            'assets/images/car.png',
-                            width: 175,
-                            height: 140,
-                            fit: BoxFit.cover,
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.450,
+                      child: Column(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: Image.asset(
+                              'assets/images/car.png',
+                              width: double.infinity,
+                              height: 140,
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 8),
-                        Row(children: [
-                          Text(
-                            'Dream Car',
-                            style: TextStyle(fontSize: 15),
-                          ),
-                          SizedBox(
-                            width: 86,
-                          ),
-                          Icon(
-                            Icons.people,
-                            color: Colors.grey,
-                          ),
-                        ]),
-                        SizedBox(height: 4),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(
-                                '20000.00/month',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              ),
-                              SizedBox(
-                                width: 35,
-                              ),
-                              Text(
-                                '9 people',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              ),
-                            ]),
-                      ],
+                          SizedBox(height: 8),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Dream Car',
+                                  style: TextStyle(fontSize: 15),
+                                ),
+                                Icon(
+                                  Icons.people,
+                                  color: Colors.grey,
+                                ),
+                              ]),
+                          SizedBox(height: 4),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  '20000.00/month',
+                                  style: TextStyle(
+                                      fontSize: 14, color: Colors.grey),
+                                ),
+                                Text(
+                                  '9 people',
+                                  style: TextStyle(
+                                      fontSize: 14, color: Colors.grey),
+                                ),
+                              ]),
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -224,104 +228,102 @@ class _SavingPlansState extends State<SavingPlans> {
                   height: 15,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(12),
-                          child: Image.asset(
-                            'assets/images/school.png',
-                            width: 175,
-                            height: 140,
-                            fit: BoxFit.cover,
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.450,
+                      child: Column(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: Image.asset(
+                              'assets/images/school.png',
+                              width: double.infinity,
+                              height: 140,
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 8),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(
-                                'School Fees',
-                                style: TextStyle(fontSize: 15),
-                              ),
-                              SizedBox(
-                                width: 75,
-                              ),
-                              Icon(
-                                Icons.people,
-                                color: Colors.grey,
-                              )
-                            ]),
-                        SizedBox(height: 4),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(
-                                '10000.00/week',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              ),
-                              SizedBox(
-                                width: 40,
-                              ),
-                              Text(
-                                '19 people',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              ),
-                            ]),
-                      ],
+                          SizedBox(height: 8),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'School Fees',
+                                  style: TextStyle(fontSize: 15),
+                                ),
+                                Icon(
+                                  Icons.people,
+                                  color: Colors.grey,
+                                )
+                              ]),
+                          SizedBox(height: 4),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  '10000.00/week',
+                                  style: TextStyle(
+                                      fontSize: 14, color: Colors.grey),
+                                ),
+                                Text(
+                                  '19 people',
+                                  style: TextStyle(
+                                      fontSize: 14, color: Colors.grey),
+                                ),
+                              ]),
+                        ],
+                      ),
                     ),
                     SizedBox(width: 10),
-                    Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(12),
-                          child: Image.asset(
-                            'assets/images/hangout.png',
-                            width: 175,
-                            height: 140,
-                            fit: BoxFit.cover,
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.450,
+                      child: Column(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: Image.asset(
+                              'assets/images/hangout.png',
+                              width: double.infinity,
+                              height: 140,
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 8),
-                        Row(children: [
-                          Text(
-                            'Get together',
-                            style: TextStyle(fontSize: 15),
-                          ),
-                          SizedBox(
-                            width: 70,
-                          ),
-                          Icon(
-                            Icons.people,
-                            color: Colors.grey,
-                          ),
-                        ]),
-                        SizedBox(height: 4),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(
-                                '20000.00/month',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              ),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Text(
-                                '19 people',
-                                style:
-                                    TextStyle(fontSize: 14, color: Colors.grey),
-                              ),
-                            ]),
-                      ],
+                          SizedBox(height: 8),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Get together',
+                                  style: TextStyle(fontSize: 15),
+                                ),
+                                Icon(
+                                  Icons.people,
+                                  color: Colors.grey,
+                                ),
+                              ]),
+                          SizedBox(height: 4),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  '20000.00/month',
+                                  style: TextStyle(
+                                      fontSize: 14, color: Colors.grey),
+                                ),
+                                Text(
+                                  '19 people',
+                                  style: TextStyle(
+                                      fontSize: 14, color: Colors.grey),
+                                ),
+                              ]),
+                        ],
+                      ),
                     ),
                   ],
                 ),
-                SizedBox(height: 20,)
+                SizedBox(
+                  height: 40,
+                )
               ],
             ),
           ),

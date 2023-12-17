@@ -17,8 +17,7 @@ class _SuccessState extends State<Success> {
   @override
   Widget build(BuildContext context) {
     return MediaQuery(
-      data:
-          MediaQuery.of(context).copyWith(textScaler: TextScaler.linear(0.85)),
+      data: MediaQuery.of(context).copyWith(textScaleFactor: 0.85),
       child: Scaffold(
         body: Center(
           child: Padding(
@@ -34,17 +33,14 @@ class _SuccessState extends State<Success> {
                           SizedBox(
                             height: height / 15,
                           ),
-                      
                           SizedBox(
                             height: height / 80,
                           ),
-                          
                           Container(
                             alignment: Alignment.center,
                             padding: EdgeInsets.fromLTRB(12, 20, 12, 0),
                             child: Image.asset('assets/images/success1.png'),
                           ),
-                      
                           Padding(
                             padding: const EdgeInsets.fromLTRB(12, 20, 15, 0),
                             child: Text(
@@ -59,10 +55,10 @@ class _SuccessState extends State<Success> {
                           Padding(
                             padding: const EdgeInsets.fromLTRB(12, 10, 15, 0),
                             child: Text(
-                              'Your saving Challenge has been created successfully click link below to go back to home',
+                              'Your saving Challenge has been created successfully. Click link below to go back to home',
                               style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 12,
+                                  fontSize: 15,
                                   fontFamily: 'Light'),
                               textAlign: TextAlign.center,
                             ),
@@ -70,27 +66,28 @@ class _SuccessState extends State<Success> {
                           SizedBox(
                             height: 25,
                           ),
-                      
                           Container(
                             width: width,
                             color: Colors.white,
                             child: ElevatedButton(
                                 child: Text(
-                                  'Go to home',
+                                  'Go to Home',
                                   style: TextStyle(
                                       color: Colors.white,
-                                      fontFamily: 'Bold',
-                                      fontSize: 19),
+                                      fontFamily: 'Medium',
+                                      fontSize: 16),
                                 ),
                                 onPressed: () {
                                   Get.to(Navbar());
                                 },
                                 style: ElevatedButton.styleFrom(
+                                  padding: EdgeInsets.symmetric(vertical: 12),
                                   backgroundColor: myColor,
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.circular(8),
                                     side: BorderSide(
-                                      color: myColor, // Set the border color here
+                                      color:
+                                          myColor, // Set the border color here
                                     ),
                                   ),
                                 )),

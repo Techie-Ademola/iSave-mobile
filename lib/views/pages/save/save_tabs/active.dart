@@ -25,17 +25,14 @@ class _ActivePlansState extends State<ActivePlans> {
             Text(
               'No Active Challenge',
               style: TextStyle(
-                  color: Colors.black, fontSize: 20, fontFamily: 'Bold'),
+                  color: Colors.black, fontSize: 18, fontFamily: 'Bold'),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
               child: Text(
                 'Oops! you have no active savings plan at the moment. When you create or join a savings challenge, you will see the full details here',
                 style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Light'),
+                    color: Colors.black, fontSize: 14, fontFamily: 'Light'),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -43,21 +40,23 @@ class _ActivePlansState extends State<ActivePlans> {
               height: 30,
             ),
             Container(
+              padding: EdgeInsets.symmetric(horizontal: 10),
               width: width,
               color: Colors.white,
               child: ElevatedButton(
                   child: Text(
                     'Create a new Challenge',
                     style: TextStyle(
-                        color: myColor, fontFamily: 'Bold', fontSize: 19),
+                        color: myColor, fontFamily: 'Medium', fontSize: 16),
                   ),
                   onPressed: () {
                     Get.to(SavingChallenge());
                   },
                   style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.symmetric(vertical: 12),
                     backgroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(8),
                       side: BorderSide(
                         color: myColor, // Set the border color here
                       ),

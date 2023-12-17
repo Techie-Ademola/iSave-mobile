@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hybrid_fintech_app/notify.dart';
 import 'package:hybrid_fintech_app/utils/media.dart';
 import 'package:hybrid_fintech_app/views/pages/save/success.dart';
 import 'package:pinput/pin_put/pin_put.dart';
@@ -18,8 +19,7 @@ class _VerifyOtpState extends State<VerifyOtp> {
   @override
   Widget build(BuildContext context) {
     return MediaQuery(
-      data:
-          MediaQuery.of(context).copyWith(textScaler: TextScaler.linear(0.85)),
+      data: MediaQuery.of(context).copyWith(textScaleFactor: 0.85),
       child: Scaffold(
         body: Center(
           child: Padding(
@@ -91,7 +91,7 @@ class _VerifyOtpState extends State<VerifyOtp> {
                             style: TextStyle(
                                 color: Colors.black,
                                 fontSize: height / 50,
-                                fontFamily: 'Light'),
+                                fontFamily: 'Medium'),
                             textAlign: TextAlign.center,
                           ),
                         ),
@@ -139,25 +139,38 @@ class _VerifyOtpState extends State<VerifyOtp> {
                         SizedBox(
                           height: 30,
                         ),
-                        RichText(
-                          text: TextSpan(
-                            text: "Didn't receive code? ",
-                            style: TextStyle(
-                                fontFamily: 'Light', color: Colors.black),
-                            children: <TextSpan>[
-                              TextSpan(
-                                text: 'Resend it',
+                        GestureDetector(
+                          onTap: () {
+                            print('OTP Sent');
+                            alert(context, 'success', 'OTP Sent!');
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    width: 1, color: Colors.transparent)),
+                            child: RichText(
+                              text: TextSpan(
+                                text: "Didn't receive code? ",
                                 style: TextStyle(
-                                    color: Colors.black, fontFamily: 'Medium'),
+                                    fontFamily: 'Light', color: Colors.black),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                    text: 'Resend it',
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontFamily: 'Medium'),
+                                  ),
+                                ],
                               ),
-                            ],
+                            ),
                           ),
                         ),
                         SizedBox(
                           height: 30,
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(20),
+                          padding: const EdgeInsets.all(15),
                           child: Container(
                             width: width,
                             color: Colors.white,
@@ -166,18 +179,20 @@ class _VerifyOtpState extends State<VerifyOtp> {
                                   'Verify',
                                   style: TextStyle(
                                       color: Colors.white,
-                                      fontFamily: 'Bold',
-                                      fontSize: 19),
+                                      fontFamily: 'Medium',
+                                      fontSize: 16),
                                 ),
                                 onPressed: () {
                                   Get.to(Success());
                                 },
                                 style: ElevatedButton.styleFrom(
+                                  padding: EdgeInsets.symmetric(vertical: 12),
                                   backgroundColor: myColor,
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.circular(8),
                                     side: BorderSide(
-                                      color: myColor, // Set the border color here
+                                      color:
+                                          myColor, // Set the border color here
                                     ),
                                   ),
                                 )),

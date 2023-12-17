@@ -2,18 +2,67 @@ import 'package:flutter/material.dart';
 import 'package:hybrid_fintech_app/utils/media.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
+// import 'package:flutter_flushbar/flutter_flushbar.dart';
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 
-alert(BuildContext context, type, String message) {
-  showTopSnackBar(
-    Overlay.of(context),
-    type == "error"
-        ? CustomSnackBar.error(
+alert(BuildContext context, String type, String message) {
+  if (type == "error") {
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(
+        SnackBar(
+          duration: Duration(seconds: 3),
+          // padding: EdgeInsets.only(bottom: 0),
+
+          /// need to set following properties for best effect of awesome_snackbar_content
+          elevation: 0,
+          behavior: SnackBarBehavior.floating,
+          backgroundColor: Colors.transparent,
+          content: AwesomeSnackbarContent(
+            title: 'Error!',
+            titleFontSize: 22,
             message: message,
-          )
-        : CustomSnackBar.success(
-            message: message,
+            messageFontSize: 15,
+
+            /// change contentType to ContentType.success, ContentType.warning or ContentType.help for variants
+            contentType: ContentType.failure,
           ),
-  );
+        ),
+      );
+  } else {
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(
+        SnackBar(
+          duration: Duration(seconds: 3),
+
+          /// need to set following properties for best effect of awesome_snackbar_content
+          elevation: 0,
+          behavior: SnackBarBehavior.floating,
+          backgroundColor: Colors.transparent,
+          content: AwesomeSnackbarContent(
+            title: 'Success!',
+            titleFontSize: 22,
+            message: message,
+            messageFontSize: 15,
+
+            /// change contentType to ContentType.success, ContentType.warning or ContentType.help for variants
+            contentType: ContentType.success,
+          ),
+        ),
+      );
+  }
+
+  // showTopSnackBar(
+  //   Overlay.of(context),
+  //   type == "error"
+  //       ? CustomSnackBar.error(
+  //           message: message,
+  //         )
+  //       : CustomSnackBar.success(
+  //           message: message,
+  //         ),
+  // );
 }
 
 successalert(BuildContext context, String title, String message) {
