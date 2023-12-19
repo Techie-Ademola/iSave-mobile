@@ -4,6 +4,7 @@ import 'package:hybrid_fintech_app/navbar.dart';
 import 'package:hybrid_fintech_app/views/heartbeat_anim.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hybrid_fintech_app/views/pages/save/onboarding/onboarding1.dart';
 // import '../../utils/colornotifire.dart';
 import '../../utils/media.dart';
 import 'package:provider/provider.dart';
@@ -36,7 +37,7 @@ class _SplashscreenState extends State<Splashscreen>
     // prefs.setBool('authenticated', false);
     // var pin = prefs.getString('login_pin');
     Timer(const Duration(seconds: 3), () {
-      Get.to(const Navbar());
+      Get.to(const Onboarding1());
       // if (isLoggedIn) {
       //   if (pin != null) {
       //   } else {
